@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
+    - run: sudo apt install unzstd
+      name: Install dependencies
     - uses: actions/checkout@v3
     - run: ./linux/build_installer.sh
       name: Build installer
