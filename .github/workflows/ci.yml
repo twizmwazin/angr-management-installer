@@ -5,17 +5,36 @@ on:
 
 
 jobs:
-  linux:
-    runs-on: ubuntu-20.04
+  linux-build:
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v3
     - run: ./linux/build_installer.sh
       name: Build installer
+    - uses: actions/upload-artifact@v3
+      with:
+        name: angr-management-linux
+        path: ./linux/angr-management-installer-linux.tar.gz
+
+  linux-test:
+    strategy:
+      matrix:
+        version:
+        - "18.04"
+        - "20.04"
+        - "22.04"
+    runs-on: ${{ matrix.version }}
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: angr-management-linux
+        path: angr-management-linux.tar.gz
 
     - run: sudo apt-get install -y xvfb x11-utils libqt5gui5
       name: Install GUI testing libraries
-    - run: tar xvf ./linux/angr-management-installer-linux.tar.gz
+    - run: tar xvf .angr-management-linux.tar.gz
       name: Extract installer
     - run: ./angr-management-install/install.sh
       name: Run installer
