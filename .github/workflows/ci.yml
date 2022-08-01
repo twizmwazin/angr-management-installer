@@ -31,11 +31,11 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: angr-management-linux
-        path: angr-management-linux.tar.gz
+        path: artifact
 
     - run: sudo apt-get install -y xvfb x11-utils libqt5gui5
       name: Install GUI testing libraries
-    - run: tar xvf angr-management-linux.tar.gz
+    - run: tar xvf artifact/angr-management-linux.tar.gz
       name: Extract installer
     - run: ./angr-management-install/install.sh
       name: Run installer
