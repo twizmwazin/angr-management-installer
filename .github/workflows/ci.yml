@@ -25,6 +25,7 @@ jobs:
         - "20.04"
         - "22.04"
     runs-on: ${{ matrix.version }}
+    needs: linux-build
 
     steps:
     - uses: actions/download-artifact@v3
