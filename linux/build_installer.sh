@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname $0)
+
 mkdir angr-management-install
 pushd angr-management-install
 
