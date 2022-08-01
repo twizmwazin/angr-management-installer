@@ -20,7 +20,9 @@ jobs:
     - run: ./angr-management-install/install.sh
       name: Run installer
     - run: |
-        xvfb-run -n 99 ~/.angr-management/python/install/bin/angr-management &
-        sleep 10 && output=$(DISPLAY=:99 xwininfo -tree -root)
-        [[ "$output" == *"angr management"* ]] || exit 1
+        xvfb-run bash -c '
+          ~/.angr-management/python/install/bin/angr-management &
+          sleep 10 && output=$(xwininfo -tree -root)
+          [[ "$output" == *"angr management"* ]] || exit 1
+        '
       name: Test angr management start
