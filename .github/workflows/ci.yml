@@ -1,0 +1,21 @@
+name:
+
+on:
+  push:
+
+
+jobs:
+  linux:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: ./linux/build_installer.sh
+
+    - run: sudo apt-get install -y xvfb x11-utils libqt5gui5
+    - run: |
+        tar xvf ./linux/angr-management-installer-linux.tar.gz
+        ./angr-management-install/install.sh
+        xvfb-run ~/.angr-management/python/bin/angr-management
+        sleep 10 && output=$(DISPLAY=:99 xwininfo -tree -root)
+        [[ "$output" == *"angr management"* ]] || exit 1
