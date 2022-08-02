@@ -5,7 +5,7 @@ cd $(dirname $0)
 mkdir angr-management-install
 pushd angr-management-install
 
-if [[ $(arch) == "i386" ]] then
+if [[ $(arch) == "i386" ]]; then
     python_dist="https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5+20220630-x86_64-apple-darwin-pgo+lto-full.tar.zst"
 else
     python_dist="https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5+20220630-aarch64-apple-darwin-pgo+lto-full.tar.zst"
