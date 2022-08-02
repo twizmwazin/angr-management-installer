@@ -17,11 +17,9 @@ rm python.tar.zst python.tar
 
 mkdir wheels
 python/install/bin/pip3 download -d wheels angr-management
-rm wheels/pyvex*
-cp pyvex* wheels
 
 popd
 
 cp {install.sh,uninstall.sh} angr-management-install/
 
-tar czf angr-management-installer-linux.tar.gz angr-management-install
+tar czf angr-management-installer-macos.tar.gz angr-management-install

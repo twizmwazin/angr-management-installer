@@ -48,3 +48,42 @@ jobs:
           [[ "$output" == *"angr management"* ]] || exit 1
         '
       name: Test angr management start
+
+  macos-build:
+    runs-on: macos-11
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: ./macos/build_installer.sh
+      name: Build installer
+    - uses: actions/upload-artifact@v3
+      with:
+        name: angr-management-macos
+        path: ./macos/angr-management-installer-macos.tar.gz
+
+  linux-test:
+    strategy:
+      matrix:
+        version:
+        - "11"
+        - "12"
+    runs-on: macos-${{ matrix.version }}
+    needs: macos-build
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: angr-management-macos
+        path: artifact
+
+    - run: tar xvf ./artifact/angr-management-installer-macos.tar.gz
+      name: Extract installer
+    - run: ./angr-management-install/install.sh
+      name: Run installer
+    - run: |
+        ~/.angr-management/python/install/bin/angr-management &
+        sleep 10 && output=$(osascript -e '
+          tell application "System Events" to get every window of every process
+        ')
+        [[ "$output" == *"angr management"* ]] || exit 1
+      name: Test angr management start
