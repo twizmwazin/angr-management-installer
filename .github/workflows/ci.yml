@@ -37,7 +37,7 @@ jobs:
 
     - run: sudo apt-get install -y xvfb x11-utils libqt5gui5
       name: Install GUI testing libraries
-    - run: tar xvf artifact/angr-management-linux.tar.gz
+    - run: tar xvf artifact/angr-management-linux-installer.tar.gz
       name: Extract installer
     - run: ./angr-management-install/install.sh
       name: Run installer
