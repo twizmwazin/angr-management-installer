@@ -61,7 +61,7 @@ jobs:
         name: angr-management-macos
         path: ./macos/angr-management-installer-macos.tar.gz
 
-  linux-test:
+  macos-test:
     strategy:
       matrix:
         version:
