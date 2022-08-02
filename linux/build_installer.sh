@@ -12,6 +12,8 @@ rm python.tar.zst python.tar
 
 mkdir wheels
 python/install/bin/pip3 download -d wheels angr-management
+rm wheels/pyvex*
+cp pyvex* wheels
 
 popd
 
