@@ -13,7 +13,7 @@ rm python.tar.zst python.tar
 mkdir wheels
 python/install/bin/pip3 download -d wheels angr-management
 rm wheels/pyvex*
-cp *.whl wheels
+cp pyvex-9.2.12-py3-none-manylinux2014_x86_64.whl wheels
 
 popd
 
