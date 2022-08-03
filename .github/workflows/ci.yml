@@ -85,5 +85,5 @@ jobs:
         sleep 10 && output=$(osascript -e '
           tell application "System Events" to get every window of every process
         ')
-        [[ "$output" == *"angr management"* ]] || exit 1
+        if [[ "$output" != *"angr management"* ]]; then echo $output; exit 1; fi
       name: Test angr management start
