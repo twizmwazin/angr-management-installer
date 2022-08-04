@@ -17,4 +17,4 @@ Pop-Location
 ps2exe install.ps1 angr-management-install/install.exe
 ps2exe uninstall.ps1 angr-management-install/uninstall.exe
 
-7z a angr-management-install.zip angr-management-install
+7z a angr-management-installer-windows.zip angr-management-install
