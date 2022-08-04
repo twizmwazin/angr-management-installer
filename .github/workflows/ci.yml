@@ -61,7 +61,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: angr-management-windows
-        path: ./linux/angr-management-installer-windows.zip
+        path: ./windows/angr-management-installer-windows.zip
 
   windows-test:
     strategy:
