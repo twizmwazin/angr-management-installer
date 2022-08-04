@@ -54,6 +54,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: Install-Module ps2exe
+      shell: pwsh
     - run: .\windows\build_installer.ps1
       name: Build installer
     - uses: actions/upload-artifact@v3
