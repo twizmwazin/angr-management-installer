@@ -58,6 +58,7 @@ jobs:
       shell: pwsh
     - run: .\windows\build_installer.ps1
       name: Build installer
+      shell: pwsh
     - uses: actions/upload-artifact@v3
       with:
         name: angr-management-windows
