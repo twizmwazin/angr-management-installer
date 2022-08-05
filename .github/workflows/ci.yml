@@ -78,7 +78,7 @@ jobs:
         name: angr-management-windows
         path: artifact
 
-    - run: 7z e -y -bb3 .\artifact\angr-management-installer-windows.zip
+    - run: 7z e -y -bb3 .\artifact\angr-management-installer-windows.zip; exit 0
       name: Extract installer
     - run: .\angr-management-install\install
       name: Run installer
