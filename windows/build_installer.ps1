@@ -1,3 +1,5 @@
+Import-Module ps2exe
+
 Push-Location $PSScriptRoot
 
 mkdir angr-management-install
