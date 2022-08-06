@@ -60,6 +60,9 @@ jobs:
         $PSVersionTable
         ls "C:\Program Files\WindowsPowerShell\Modules"
       shell: pwsh
+    - run: |
+        Get-InstalledModule
+      shell: pwsh
     - run: .\windows\build_installer.ps1
       name: Build installer
       shell: pwsh
